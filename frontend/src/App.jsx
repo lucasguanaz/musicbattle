@@ -54,8 +54,9 @@ function App() {
       const res = await fetch(`${API_BASE}/playlist/${playlistId}`);
       const data = await res.json();
 
-      if (!data.tracks || data.tracks.length < 2) {
-        alert("A playlist precisa ter pelo menos 2 faixas válidas.");
+      // Aceitar qualquer playlist que tenha músicas
+      if (!data.tracks || data.tracks.length === 0) {
+        alert("Nenhuma faixa encontrada nessa playlist.");
       } else {
         setTracks(data.tracks);
       }
