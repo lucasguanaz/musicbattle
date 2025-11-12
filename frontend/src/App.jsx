@@ -9,16 +9,17 @@ function App() {
   const [playlistUrl, setPlaylistUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // 🔑 Recupera token do Spotify (se já logou antes)
+  // 🔑 Recupera token da URL (depois do login)
   useEffect(() => {
-    const hash = window.location.hash;
+    const query = new URLSearchParams(window.location.search);
+    const tokenFromUrl = query.get("access_token");
     const storedToken = window.localStorage.getItem("spotify_token");
 
-    if (!storedToken && hash) {
-      const tokenFromUrl = new URLSearchParams(hash.replace("#", "?")).get("access_token");
-      window.location.hash = "";
+    if (!storedToken && tokenFromUrl) {
       window.localStorage.setItem("spotify_token", tokenFromUrl);
       setToken(tokenFromUrl);
+      // limpa o access_token da URL
+      window.history.replaceState({}, document.title, "/");
     } else if (storedToken) {
       setToken(storedToken);
     }
