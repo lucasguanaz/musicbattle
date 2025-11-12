@@ -1,0 +1,6 @@
+body{font-family:Inter,Arial,Helvetica,sans-serif;background:#050608;color:#fff;margin:0}
+.container{max-width:980px;margin:28px auto;padding:20px}
+header h1{font-size:32px;margin:0 0 16px;text-transform:uppercase}
+.form{display:flex;gap:8px;margin-bottom:18px}
+.form input{flex:1;padding:10px;border-radius:8px;border:1px solid #222;background:#0b0b0d;color:#fff}
+.form button{padding:10px 14px;border-radius:8px;border:0;background:#e11b22;color:#fff;cursor:pointer}
