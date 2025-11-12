@@ -102,9 +102,9 @@ app.get("/playlist/:id", async (req, res) => {
       return res.status(400).json(data);
     }
 
-    // Filtrar apenas músicas com preview
+    // ✅ Agora aceita todas as músicas (mesmo sem preview)
     const tracks = data.tracks.items
-      .filter((item) => item.track && item.track.preview_url)
+      .filter((item) => item.track)
       .map((item) => item.track);
 
     res.json({ tracks });
